@@ -330,6 +330,14 @@ a .card-title {
 	background-image: none;
 }
 
+.card-sub-header {
+	display: inline;
+    float: right;
+    padding-right: 0;
+    margin-right: -10%;
+    font-family: "Public Sans",sans-serif;
+}
+
 .action-link.mr-30 {
     margin-right: 30px;
 }
@@ -386,6 +394,14 @@ text-align: left!important;
     padding-left: 1.5rem;
 	padding: 0;
     margin-top: -10px;
+}
+	
+.card-sub-header {
+	display: flex;
+    float: left;
+    padding-right: auto;
+    margin-right: auto;
+    font-family: "Public Sans",sans-serif;
 }
 
 

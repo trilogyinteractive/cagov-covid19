@@ -18,46 +18,63 @@ permalink: /manual-content/telehealth.html
 {%- endfor -%}
 
 <h2>Find your telehealth options</h2>
-<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Select your county
-  </button>
-	<!----- Dynamic county list ------>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Sacramento</a>
-    <a class="dropdown-item" href="#">Loas Angeles</a>
-    <a class="dropdown-item" href="#">San Diego</a>
-  </div>
-</div>
+<form class="form-inline js-alert-lookup">
+        <div class="form-group">
+          <label for="location-query"
+            >Please enter your county or zip code:</label
+          >
+          <div class="awesomplete">
+            <div class="awesomplete">
+              <input
+                aria-expanded="false"
+                aria-owns="awesomplete_list_1"
+                autocomplete="off"
+                class="city-search form-control"
+                data-list=""
+                data-multiple=""
+                id="location-query"
+                role="combobox"
+                type="text"
+              />
+              <ul hidden="" role="listbox" id="awesomplete_list_1"></ul>
+              <span
+                class="visually-hidden"
+                role="status"
+                aria-live="assertive"
+                aria-atomic="true"
+                >Type 2 or more characters for results.</span
+              >
+            </div>
+            <ul hidden="" id="awesomplete-list-1" role="listbox"></ul>
+            <span
+              class="visually-hidden"
+              aria-atomic="true"
+              aria-live="assertive"
+              role="status"
+              >Type 2 or more characters for results.</span
+            >
+          </div>
+          <button class="btn btn-primary" type="submit">Find providers</button>
+          <div class="invalid-feedback">
+            Please enter a county or zip code in California.
+          </div>
+        </div>
+      </form>
+
 	<!----- Dynamic results ------>
+
 <div class="pt-5">
+	
 	<div class="card">
-	  <div class="card-header bold">
-		Kaiser Permanente
-	  </div>
+	  <div id="plan-name" class="card-header bold">Kaiser Permanente
+	  <div id="plan-type" class="card-sub-header">Medi-Cal Managed Care</div></div>
 	  <div class="card-body">
-		<p class="card-text">Members can log into provider website to schedule video or phone appointments, no need to call.</p>
-		<a href="#" class="action-link mr-3">Visit Telehealth Website</a> <a href="#" class="action-link">Visit Health Provider Website</a>
+		<p>Online medical care offered: <span id="telehealth-offered" class="bold">Yes</span></p>  
+		<p>Telehealth Services Phone Number: <a id="telehealth-number" class="bold" href="tel:1-847-555-5555">1-847-555-5555</a></p>  
+		<p>Health Plan Nurse Advice Line: <a id="telehealth-number" class="bold" href="tel:1-800-888-8888">1-800-888-8888</a></p> 
+		<p id="special-notes" class="card-text">Kaiser Permanente encourages members to visit the health plan's website to schedule video or phone appointments or find the phone number of the local Kaiser Permanente facility.</p>
+		<a id="telehealth-website" href="#" class="action-link mr-3">Visit Telehealth Website</a>
 	  </div>
 	</div>
-		<div class="card">
-	  <div class="card-header bold">
-		Molina Healthcare
-	  </div>
-	  <div class="card-body">
-		
-		<p class="card-text">Available at no cost for Marketplace and Medicare members. in the process of evaluating Teladoc for our Medi-Cal population.</p>
-		<a href="#" class="action-link mr-3">Visit Telehealth Website</a> 
-	  </div>
-	</div>
-		<div class="card">
-	  <div class="card-header bold">
-		Sutter Health Plan
-	  </div>
-	  <div class="card-body">
-		
-		<p class="card-text">Members can schedule video visits either by logging onto My Health Online website or calling the number above.</p>
-		<a href="#" class="action-link">Visit Health Provider Website</a>
-	  </div>
-	</div>
+	
 </div>
