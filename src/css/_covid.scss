@@ -53,6 +53,11 @@ a.btn:hover {
   text-decoration: underline !important;
 }
 
+.bg-light-grey {
+	background-color: #f1f1f1;
+}
+
+
 .bold {
   font-family: "Public Sans Bold", sans-serif;
 }
@@ -474,6 +479,11 @@ button:focus {
   #nav-card {
     border-radius: 0 !important;
   }
+	
+	a.list-group-item.list-group-item-action.guide {
+    padding-left: 3.5rem;
+}
+
 }
 
 a.list-group-item.list-group-item-action {
@@ -491,6 +501,8 @@ a.list-group-item.list-group-item-action {
 .aside {
   padding-bottom: 0 !important;
 }
+
+
 
 @media only screen and (min-width: 992px) {
   .aside {
