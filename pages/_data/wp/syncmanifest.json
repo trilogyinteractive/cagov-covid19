@@ -1523,7 +1523,7 @@
       "id": 3788,
       "filename": "care-in-senior-facilities",
       "pagetitle": "Care in senior living",
-      "modified": "2020-05-29T16:46:47",
+      "modified": "2020-05-29T20:46:01",
       "tags": [],
       "category": "Uncategorized",
       "isFragment": false,
@@ -1532,8 +1532,8 @@
       "translate": false,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "9fd500a5e25f3265d9f1596edcd3fab1d7bd7d9d",
-      "github_sha": "874e21a9735878e9343b5edcf03498caab9dc8e2"
+      "wp_sha": "5abbcf41cfd87537c9da7e6911dbd344275b6ba7",
+      "github_sha": "0024af2c500e433779b4a297f502e8927fb287d4"
     },
     {
       "slug": "childcare",
@@ -2563,7 +2563,7 @@
       "id": 1392,
       "filename": "new",
       "pagetitle": "new",
-      "modified": "2020-05-29T18:43:53",
+      "modified": "2020-05-29T19:49:40",
       "tags": [
         "fragment",
         "translate",
@@ -2576,8 +2576,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "13ce1e940a9d6ff8520306b45a7a44d6a16428f3",
-      "github_sha": "e22954e028a44ef557212bac64f00499dbdfda17"
+      "wp_sha": "328055a9ed433f41d187254f56667bac320d1805",
+      "github_sha": "b79681fde661ce06a8e771fa523661efecea25a6"
     },
     {
       "slug": "page-redirect-table",
@@ -2696,7 +2696,7 @@
       "id": 1997,
       "filename": "restaurants-deliver-home-meals-for-seniors",
       "pagetitle": "Great Plates Delivered: Home meals for seniors",
-      "modified": "2020-05-26T17:51:07",
+      "modified": "2020-05-29T20:01:24",
       "tags": [
         "translate"
       ],
@@ -2707,8 +2707,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "71351c61f052cfd7ea1f62741d45dbcb6df4dca8",
-      "github_sha": "3e2a56d0ccf682a0e137b0cefaceb6331a91b1e1"
+      "wp_sha": "ea74bee802e7c54085722479b46f1aae5b9da944",
+      "github_sha": "6b234cac89d285e3530c74eb30caf19cf952307e"
     },
     {
       "slug": "roadmap",
@@ -2914,7 +2914,7 @@
       "id": 432,
       "filename": "stay-home-except-for-essential-needs",
       "pagetitle": "Stay home Q&#038;A",
-      "modified": "2020-05-28T22:40:29",
+      "modified": "2020-05-29T19:17:41",
       "tags": [
         "translate"
       ],
@@ -2925,8 +2925,8 @@
       "translate": true,
       "ignore": false,
       "lang": "en",
-      "wp_sha": "b7b260ffc0865c0b81dfb1d32a8f4cfe7fd11020",
-      "github_sha": "279bbd157749b1421281bd22d776ed1bc67f0982"
+      "wp_sha": "30c0240dcd05b6bc8d3902e557c7913a535b3c80",
+      "github_sha": "3f1c6755ff952a6e00bf81cacf31fc5d1386128a"
     },
     {
       "slug": "symptoms-and-risks",
