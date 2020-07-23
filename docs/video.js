@@ -108,7 +108,7 @@ for(i=0; i<video.openers.length; i++){
     } else {
       video.youtubeId = e.target.closest("[data-video]").dataset.video;
     }
-console.log(video.youtubeId);
+
     if(video.youtubeId){
       switch(video.youtubeStatus){
         case "notLoaded":
