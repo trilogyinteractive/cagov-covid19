@@ -147,5 +147,4 @@ document.addEventListener('DOMContentLoaded', function (DOMContentLoadedEvent) {
   waypoints.register(document.getElementsByClassName('custom-trigger'), '90%');
   waypoints.register(document.getElementsByClassName('low-trigger'), '95%');
   waypoints.register(document.getElementsByClassName('high-trigger'), '65%');
-  }
 });

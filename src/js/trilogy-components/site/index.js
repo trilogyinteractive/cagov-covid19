@@ -1,3 +1,5 @@
+import './polyfill-closest.js';
+
 var site = {
   modalOpener: null, // Remember which element opened a modal so we can return focus to it when the modal closes.
   previousY: 0, // The Y position of the scrollbar before the user scrolls again.
