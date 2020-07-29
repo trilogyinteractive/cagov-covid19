@@ -15,17 +15,15 @@ Only the `<div>` for the currently playing video is visible when the modal is op
 The modal markup should go as close to the `</body>` tag as possible.
 ````html
 <div id="video-modal" class="video-modal">
-  <button class="video-modal-close modal_close" data-close-video="">
-    <svg class="video-modal-close-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 274.752l-226.272-226.272-45.248 45.248 226.272 226.272-226.272 226.272 45.248 45.248 226.272-226.272 226.272 226.272 45.248-45.248-226.272-226.272 226.272-226.272-45.248-45.248-226.272 226.272z"></path></svg>
-  </button>
-  <div id="video-container"></div>
+  <button class="video-modal-close">Close</button>
+  <div id="video-container">Videos appear here</div>
 </div>
 ````
 
 Any element with a `video-modal-open` class will act as an opener. It also needs a `[data-video]` attribute with the ID
 of the YouTube video to load.
 ````html
-<article class="video-item video-item-small video-modal-open" data-video="aWmw_cLiuOk">
+<article class="video-modal-open" data-video="aWmw_cLiuOk">
   Thumbnail goes here
 </article>
 ````
