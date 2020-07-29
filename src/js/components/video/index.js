@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function (DOMContentLoadedEvent) {
 
     document.getElementsByTagName('HTML')[0].classList.remove('popup_visible');
     document.getElementById('video-' + video.youtubeId).style.display = 'none';
+    document.getElementById('video-' + video.youtubeId).parentElement.style.display = 'none';
     video.modal.style.display = 'none';
     video.youtubeId = null;
   };
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function (DOMContentLoadedEvent) {
     if (player) {
       player.style.display = 'block';
     } else {
-      container.innerHTML += '<div id="' + playerId + '"></div>';
+      container.innerHTML += '<div class="video-modal-player"><div id="' + playerId + '"></div></div>';
     }
 
     if (!video.players[video.youtubeId]) {
@@ -81,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function (DOMContentLoadedEvent) {
       });
     } else {
       player.style.display = 'block';
+      player.parentElement.style.display = 'block';
       video.players[video.youtubeId].playVideo();
     }
   };
@@ -141,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function (DOMContentLoadedEvent) {
    * Clicking outside the modal will close it.
    */
   window.onclick = function (e) {
-    if (e.target === video.modal) {
+    if (e.target === video.modal || e.target.classList.contains("video-modal-close")) {
       video.closeModal();
     }
   };
