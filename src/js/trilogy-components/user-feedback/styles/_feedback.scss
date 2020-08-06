@@ -1,0 +1,96 @@
+.feedback-form {
+	background: $blue;
+	padding: 2rem;
+	@include desktop {
+		padding: 3rem;
+	}
+	&-grid {
+		@include tablet {
+			display: inline-flex;
+		}
+		&-col {
+			&:first-child {
+				@include tablet {
+					padding-right: 2rem;
+					border-right: 2px solid rgba($white, .25);
+				}
+			}
+			&:last-child {
+				@include tablet {
+					padding-left: 2rem;
+				}
+			}
+		}
+	}
+	&-label {
+		@extend %headline5;
+		color: $white;
+		cursor: pointer;
+		display: block;
+		margin-bottom: .5rem;
+		transition: .3s color $slow-curve;
+		@include tablet {
+			margin-bottom: 1rem;
+		}
+		&:hover {
+			color: $yellow;
+		}
+	}
+	&-button {
+		background: $orange;
+		padding: .75rem 1.5rem;
+		color: $darkblue;
+		border: none;
+		border-radius: 2rem;
+		@extend %headline5;
+		transition: .3s background $slow-curve;
+		cursor: pointer;
+		text-transform: uppercase;
+		margin: 0 .25rem;
+		&:hover {
+			background: $yellow;
+			box-shadow: $button-shadow;
+		}
+		&:focus {
+			box-shadow:  0 0 0 2px $white;
+		}
+	}
+	&-add {
+		padding-top: 2rem;
+		@include tablet {
+			text-align: left;
+			padding-top: 0;
+		}
+		&-grid {
+			position: relative;
+			@include tablet {
+				display: inline-flex;
+			}
+		}
+
+	}
+	&-textarea {
+		width: 100%;
+		padding: 1rem;
+		font-family: $body;
+		color: $darkblue;
+		@include tablet {
+			width: 20rem;
+		}
+		&:focus {
+			box-shadow:  0 0 0 2px $orange;
+		}
+	}
+	&-thanks {
+		display: none;
+		@extend %headline5;
+		color: $white;
+	}
+	&-error {
+		@include absolute(left 0 top 100%);
+		background: $orange;
+		color: $darkblue;
+		padding: .5rem;
+		display: none;
+	}
+}

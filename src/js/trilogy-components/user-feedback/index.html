@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Feedback</title>
+    <link rel="stylesheet" type="text/css" href="./dist/index.min.css" />
+    <script src="./index.js" defer></script>
+  </head>
+  <body>
+    <template id="user-feedback">
+      <cwds-pagerating data-endpoint-url="https://api.alpha.ca.gov/WasHelpful" data-question="Is this page useful?" data-yes="Yes" data-no="No" data-comment-prompt="Additional comments:" data-thanks-feedback="Thank you for your feedback!" data-thanks-comments="Thank you for your comments!" data-submit="Submit" data-required-field="This field required"><div class="container-fluid bg-primary ">
+        <div class="feedback-form">
+
+            <div class="feedback-form-grid">
+
+                  <div class="feedback-form-grid-col">
+
+                      <div class="js-feedback-form">
+                        <label class="feedback-form-label" id="feedback-rating">Is this page useful?</label>
+                        <button class="feedback-form-button js-feedback-yes" id="feedback-yes" aria-labelledby="feedback-rating">Yes</button>
+                        <button class="feedback-form-button js-feedback-no" id="feedback-no" aria-labelledby="feedback-rating">No</button>
+                      </div>
+
+                      <div class="feedback-form-thanks js-feedback-thanks" role="alert">Thank you for your feedback!</div>
+
+                  </div>
+
+                  <div class="feedback-form-grid-col">
+
+                    <div class="feedback-form-add">
+                      <label class="feedback-form-label" for="add-feedback">Additional comments:</label>
+                      <div class="feedback-form-add-grid">
+                        <textarea name="add-feedback" class="js-add-feedback feedback-form-textarea" id="add-feedback" rows="1"></textarea>
+                        <div class="feedback-form-error feedback-error" role="alert">This field required</div>
+                        <button class="feedback-form-button js-feedback-submit" type="submit" id="feedback-submit">Submit</button>
+                      </div>
+                    </div>
+                    <div class="feedback-form-thanks feedback-thanks-add" role="alert">Thank you for your comments!</div>
+
+                </div>
+
+            </div>
+
+        </div>
+      </cwds-pagerating>
+    </template>
+
+    <user-feedback></user-feedback>
+  </body>
+</html>
