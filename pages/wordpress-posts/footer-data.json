@@ -19,20 +19,21 @@
     {
       "Name": "Feedback",
       "URL": "https://www.surveymonkey.com/r/COVID19CAGOV"
+    },
+    {
+      "Name": "Register to vote",
+      "URL": "https://registertovote.ca.gov"
     }
   ],
   "Table2": [
     {
-      "Name": "County alerts",
-      "URL": "/sign-up-for-county-alerts/"
+      "Name": "County alerts"
     },
     {
-      "Name": "Search",
-      "URL": "/search/"
+      "Name": "Search"
     },
     {
-      "Name": "Back to top",
-      "URL": "#top"
+      "Name": "Back to top"
     }
   ],
   "Table3": [
@@ -46,7 +47,7 @@
       "Text": "California Coronavirus (COVID-19) Response"
     },
     {
-      "Text": "Search"
+      "Text": "Search this site"
     },
     {
       "Text": "Select language"
@@ -65,6 +66,9 @@
     },
     {
       "Text": "Please take 2 minutes to complete our COVID-19 survey"
+    },
+    {
+      "Text": "Please take 3 minutes to complete the survey about reopening schools."
     }
   ]
 }

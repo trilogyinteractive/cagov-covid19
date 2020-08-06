@@ -5,6 +5,7 @@ const fs = require('fs');
 const md5 = require('md5');
 const fileChecker = require ("https");
 const langData = JSON.parse(fs.readFileSync('pages/_data/langData.json','utf8'));
+const dateFormats = JSON.parse(fs.readFileSync('pages/_data/dateformats.json','utf8'));
 const statsData = JSON.parse(fs.readFileSync('pages/_data/caseStats.json','utf8')).Table1[0];
 let htmlmap = [];
 if(fs.existsSync('pages/_data/htmlmap.json')) {
@@ -43,6 +44,12 @@ module.exports = function(eleventyConfig) {
     return output;
   });
 
+  //Replaces content to rendered
+  const replaceContent = (item,searchValue,replaceValue) => {
+    item.template.frontMatter.content = item.template.frontMatter.content
+      .replace(searchValue,replaceValue);
+  }
+
   //Process translated posts
   let translatedPaths = []
   eleventyConfig.addCollection("translatedposts", function(collection) {
@@ -50,10 +57,30 @@ module.exports = function(eleventyConfig) {
     let output = [];
     
     collection.getAll().forEach(item => {
+      //fix all http/https links to covid sites
+      replaceContent(item,/"http:\/\/covid19.ca.gov\//g,`"https://covid19.ca.gov/`);
+      replaceContent(item,/"http:\/\/files.covid19.ca.gov\//g,`"https://files.covid19.ca.gov/`);
+      replaceContent(item,/"https:\/\/covid19.ca.gov\/pdf\//g,`"https://files.covid19.ca.gov/pdf/`);
+      replaceContent(item,/"https:\/\/covid19.ca.gov\/img\//g,`"https://files.covid19.ca.gov/img/`);
+
         if(item.inputPath.includes(FolderName)) {
-          item.outputPath = item.outputPath.replace(`/${FolderName}`,'');
+          //update translated paths.
+          const langrecord = getLangRecord(item.data.tags);
+          const getTranslatedPath = path =>
+            path
+              .replace(`${langrecord.filepostfix}/`,`/`)
+              .replace(`${FolderName}/`,`${langrecord.pathpostfix}`);
+
+          //quick check to see if the tag matches the file name
+          if(!item.url.endsWith(langrecord.filepostfix+'/')) {
+            console.error(`lang tag does not match file name. ${item.url} ≠ ${langrecord.filepostfix} `);
+          }
+    
+          replaceContent(item,/"https:\/\/covid19.ca.gov\//g,`"/${langrecord.pathpostfix}`);
+
+          item.outputPath = getTranslatedPath(item.outputPath)
           translatedPaths.push(item.outputPath);
-          item.url = item.url.replace(`/${FolderName}`,'');
+          item.url = getTranslatedPath(item.url);
           item.data.page.url = item.url;
           output.push(item);
 
@@ -149,26 +176,73 @@ module.exports = function(eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter('formatDateParts', function(datestring) {
+  eleventyConfig.addFilter('formatDate2', function(datestring,withTime,tags,addDays) {
+    return formatDate(datestring,withTime,tags,addDays);
+  });
+
+  const formatDate = (datestring, withTime, tags, addDays) => {
+    const locales = 'en-US';
+    const timeZone = 'America/Los_Angeles';
+    
     if(datestring) {
-      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
-      if(output) {
-        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
-      }  
+      let targetdate =
+        datestring==='today'
+          ? new Date()
+          : datestring.indexOf('Z') > -1
+            ? new Date(datestring)
+            : new Date(`${new Date().getUTCFullYear()}-${datestring}T08:00:00.000Z`);
+      if(targetdate) {
+        if(addDays) {
+          targetdate.setUTCDate(targetdate.getUTCDate() + addDays);
+        }
+
+        const langId = getLangRecord(tags).id;
+        const formatRecord = dateFormats[langId.toLowerCase()];
+
+        const defaultTimeString = targetdate.toLocaleTimeString(locales, { timeZone, hour: 'numeric', minute: '2-digit' })
+        const dateHours = Number(defaultTimeString.split(' ')[0].split(':')[0]);
+        const dateMinutes = defaultTimeString.split(' ')[0].split(':')[1];
+        const dateAm = defaultTimeString.split(' ')[1]==='AM';
+        const dateYear = Number(targetdate.toLocaleDateString(locales, { timeZone, year: 'numeric' }));
+        const dateDay = Number(targetdate.toLocaleDateString(locales, { timeZone, day: 'numeric' }));
+        const dateMonth = Number(targetdate.toLocaleDateString(locales, { timeZone, month: 'numeric' }))-1;
+
+        const dateformatstring = formatRecord
+          .monthdayyear[dateMonth]
+          .replace('[day]',dateDay)
+          .replace('[year]',dateYear);
+
+        const timeformatstring = 
+          (dateAm
+            ? formatRecord.timeam
+            : formatRecord.timepm
+          )
+          .replace('[hour-12]',dateHours)
+          .replace('[hour-24]',(dateHours+(dateAm ? 0 : 12)))
+          .replace('[min]',dateMinutes);
+
+        if(withTime) {
+          return formatRecord.joinstring
+            .replace('[date]',dateformatstring)
+            .replace('[time]',timeformatstring);
+        } else {
+          return dateformatstring;
+        }
+      }
     }
-    return "";
+    return datestring;
+  }
+  
+
+  eleventyConfig.addFilter('formatDateParts', function(datestring, adddays) {
+    return formatDate(datestring,null,null,adddays);
   })
 
   eleventyConfig.addFilter('formatDatePartsPlus1', function(datestring) {
-    if(datestring) {
-      let output = new Date(`2020-${datestring}T00:00:00.000-07:00`);
-      if(output) {
-        output.setDate(output.getDate() + 1)
-        return output.toLocaleDateString('en-US', { timeZone: 'America/Los_Angeles', day: 'numeric', month: 'long' })
-      }  
-    }
-    return "";
+    return formatDate(datestring,null,null,1);
   })
+
+  
 
   eleventyConfig.addFilter('truncate220', function(textstring) {
     if(!textstring || textstring.length <221) {
@@ -384,9 +458,7 @@ module.exports = function(eleventyConfig) {
     return langData.languages
       .filter(x=>x.enabled)
       .map(x=>({
-        url: `/${(engSlug+x.filepostfix)
-          .replace(/^-/,'')}/` //Remove dashes from start of root URLs
-          .replace(/\/\//,'/'), //Replace double slash with singles
+        url: `/${x.pathpostfix}${(engSlug)}/`.replace(/\/\/$/,'/'),
         langcode:x.id,
         langname:x.name
         }))
