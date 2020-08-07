@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Latest News</title>
+    <link rel="stylesheet" type="text/css" href="./dist/index.min.css" />
+  </head>
+  <body>
+    <template id="latest-news">
+      <section class="news trigger" role="region" aria-labelledby="news-feed">
+      <div class="news-wrap">
+
+        <h3 class="news-headline"><a class="news-headline-link" href="/" id="news-feed">Latest News</a></h3>
+        <div id="news-grid" class="news-grid"></div>
+
+        <a class="button trigger" href="/">
+          <div class="button-label">More News</div>
+          <figure class="button-icon">
+            <span class="button-primary-circle"></span>
+            <span class="button-arrow-wrapper">
+              <span class="button-arrow">
+                <span class="button-inline-svg">
+                  <svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+                </span>
+              </span>
+              <span class="button-arrow">
+                <span class="button-inline-svg">
+                  <svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+                </span>
+              </span>
+            </span>
+          </figure>
+        </a>
+
+      </div>
+      </section>
+    </template>
+
+    <latest-news></latest-news>
+    <script src="./dist/index.min.js"></script>
+  </body>
+</html>
