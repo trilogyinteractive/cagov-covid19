@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hero Stats</title>
+    <link rel="stylesheet" type="text/css" href="./dist/index.min.css" />
+  </head>
+  <body>
+    <template id="hero-stats">
+    <div class="hero-stats" role="region" aria-labelledby="tracking-covid">
+      <h2 class="hero-stats-headline" id="tracking-covid">Tracking COVID-19</h2>
+      <div class="hero-stats-subheadline">In California, Updated June 22, 2020</div>
+
+      <ul class="hero-stats-tabs">
+        <li class="hero-stats-tabs-item active" id="cumulative-trigger">
+          <button class="hero-stats-tabs-button" role="button" aria-controls="cumulative">Cumulative</button>
+        </li>
+        <li class="hero-stats-tabs-item" id="fortnite-trigger">
+          <button class="hero-stats-tabs-button" role="button" aria-controls="fortnite">Last 14 Days</button>
+        </li>
+      </ul>
+
+      <div id="hero-stats-slider" class="hero-stats-slider"></div>
+      <div class="hero-stats-footer">
+        <a class="hero-stats-footer-link" href="/">County Dashboard</a><a class="hero-stats-footer-link" href="/">State Dashboard</a>
+      </div>
+    </div>
+    </template>
+
+    <hero-stats></hero-stats>
+    <script src="./dist/index.min.js"></script>
+  </body>
+</html>
