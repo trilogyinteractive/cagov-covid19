@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Video Layer</title>
+    <link rel="stylesheet" type="text/css" href="./dist/index.min.css" />
+  </head>
+  <body>
+    <template id="video-layer">
+      <section class="video trigger" role="region" aria-labelledby="video-resources">
+        <div class="video-wrap">
+
+          <h3 class="video-headline"><a class="video-headline-link" href="/" id="video-resources">Video Resources</a></h3>
+          <div class="video-grid">
+
+            <div id="featured-video"></div>
+
+            <div class="video-grid-col">
+              <div id="video-grid" class="video-grid-more"></div>
+            </div>
+
+          </div>
+
+          <a class="button trigger" href="/" role="button">
+            <div class="button-label">More Video</div>
+            <figure class="button-icon">
+              <span class="button-primary-circle"></span>
+              <span class="button-arrow-wrapper">
+                <span class="button-arrow">
+                  <span class="button-inline-svg">
+                    <svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+                  </span>
+                </span>
+                <span class="button-arrow">
+                  <span class="button-inline-svg">
+                    <svg class="button-inline-svg-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"><path d="M13.1506849 1.02215525l6.5753425 6.57534247-6.5753425 6.57534248M0 7.59749772h19.7260274"></path></g></svg>
+                  </span>
+                </span>
+              </span>
+            </figure>
+          </a>
+
+        </div>
+      </section>
+    </template>
+
+    <video-layer></video-layer>
+
+    <div id="modal" class="video-modal">
+      <button class="video-modal-close modal_close" data-close-video="">
+        <svg class="video-modal-close-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M320 274.752l-226.272-226.272-45.248 45.248 226.272 226.272-226.272 226.272 45.248 45.248 226.272-226.272 226.272 226.272 45.248-45.248-226.272-226.272 226.272-226.272-45.248-45.248-226.272 226.272z"></path></svg>
+      </button>
+    </div>
+
+    <script src="./dist/index.min.js"></script>
+  </body>
+</html>
